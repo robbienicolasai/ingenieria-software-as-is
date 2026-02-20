@@ -1,0 +1,288 @@
+\documentclass[11pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\geometry{margin=2.2cm}
+\setlist[itemize]{leftmargin=*}
+\setlist[enumerate]{leftmargin=*}
+
+\title{Benchmarking Funcional\\Proyecto: Sistema universitario de boletos de estacionamiento}
+\author{Robbie Nicolas Curioso de Salazar (ID 186028)}
+\date{19 de febrero de 2026}
+
+\begin{document}
+\maketitle
+
+\section*{Objetivo}
+Analizar 6 soluciones similares para extraer funcionalidades útiles, comparar flujos y tomar decisiones de diseño para el sistema del proyecto.
+
+\section{Fichas de benchmarking (1 por producto)}
+
+\subsection{Producto 1: ParkMobile}
+\textbf{Plataforma:} Híbrida (web + app móvil)\\
+\textbf{Audiencia objetivo:} Conductores en ciudades/campus/eventos.
+
+\textbf{Funcionalidades relevantes (8):}
+\begin{enumerate}
+\item Pago de estacionamiento por zona.
+\item Extensión de tiempo desde app.
+\item Reserva anticipada en lotes/garajes.
+\item Recordatorios de sesión.
+\item Gestión de vehículos guardados.
+\item Recibos/historial de pagos.
+\item Pago sin efectivo/tarjeta en app.
+\item Búsqueda de ubicación de estacionamiento.
+\end{enumerate}
+
+\textbf{Flujos clave:}
+\begin{itemize}
+\item \textit{Happy path:} buscar zona $\rightarrow$ seleccionar tiempo $\rightarrow$ pagar $\rightarrow$ recibir confirmación.
+\item \textit{Alternativa:} sesión por vencer $\rightarrow$ notificación $\rightarrow$ extender tiempo (si la autoridad lo permite).
+\end{itemize}
+
+\textbf{Datos que captura/muestra:} zona, placas, método de pago, tiempo, costo total, estado de sesión, historial.
+
+\textbf{Widgets/controles por dato:} campo de zona, selector de tiempo, botón \textit{Pagar}, botón \textit{Extender}, lista de vehículos, tarjeta de recibo.
+
+\textbf{Evidencia y fuente:}
+\begin{itemize}
+\item Sitio principal: \url{https://parkmobile.io/}
+\item FAQ extensión: \url{https://support.parkmobile.io/hc/en-us/articles/36854869625883-Can-I-extend-a-parking-session}
+\end{itemize}
+
+\subsection{Producto 2: SpotHero}
+\textbf{Plataforma:} Híbrida (web + app móvil)\\
+\textbf{Audiencia objetivo:} Conductores en zonas urbanas/eventos.
+
+\textbf{Funcionalidades relevantes (8):}
+\begin{enumerate}
+\item Búsqueda por destino/fecha-hora.
+\item Reserva anticipada de cajón.
+\item Comparación de precios por ubicación.
+\item Pase de estacionamiento digital.
+\item Integración con Apple CarPlay.
+\item Filtros por tipo de estacionamiento.
+\item Gestión de reservaciones.
+\item Soporte para cambios/cancelación (según políticas).
+\end{enumerate}
+
+\textbf{Flujos clave:}
+\begin{itemize}
+\item \textit{Happy path:} escribir destino $\rightarrow$ comparar opciones $\rightarrow$ pagar $\rightarrow$ mostrar pase digital.
+\item \textit{Alternativa:} cambiar hora de llegada $\rightarrow$ buscar de nuevo $\rightarrow$ reservar nuevo lugar.
+\end{itemize}
+
+\textbf{Datos que captura/muestra:} destino, hora de entrada/salida, precio, dirección del lote, pase QR/código, estado de reserva.
+
+\textbf{Widgets/controles:} barra de búsqueda, selector fecha/hora, filtros, tarjetas comparativas, botón \textit{Reserve}, vista \textit{Parking Pass}.
+
+\textbf{Evidencia y fuente:}
+\begin{itemize}
+\item Sitio principal: \url{https://spothero.com/}
+\item Parking y reservas: \url{https://spothero.com/parking}
+\item How it works: \url{https://blog.spothero.com/how-spothero-works}
+\end{itemize}
+
+\subsection{Producto 3: Passport Parking}
+\textbf{Plataforma:} Híbrida (web + app móvil)\\
+\textbf{Audiencia objetivo:} Conductores en ciudades/universidades.
+
+\textbf{Funcionalidades relevantes (8):}
+\begin{enumerate}
+\item Iniciar sesión de estacionamiento por app.
+\item Extender sesión en remoto.
+\item Gestión de pagos móviles.
+\item Soporte a múltiples métodos de pago.
+\item Historial de sesiones.
+\item Confirmaciones en app.
+\item Gestión de cuenta y vehículos.
+\item Operación por zonas.
+\end{enumerate}
+
+\textbf{Flujos clave:}
+\begin{itemize}
+\item \textit{Happy path:} seleccionar zona $\rightarrow$ ingresar tiempo $\rightarrow$ pagar $\rightarrow$ confirmación.
+\item \textit{Alternativa:} tiempo insuficiente $\rightarrow$ extender sesión $\rightarrow$ confirmar cobro adicional.
+\end{itemize}
+
+\textbf{Datos que captura/muestra:} zona, matrícula, duración, costo, método de pago, comprobante.
+
+\textbf{Widgets/controles:} selector de zona, selector de tiempo, botón \textit{Pay}, botón \textit{Extend}, historial.
+
+\textbf{Evidencia y fuente:}
+\begin{itemize}
+\item \url{https://www.passportparking.com/}
+\item \url{https://www.passportinc.com/product/parking/}
+\end{itemize}
+
+\subsection{Producto 4: ParkWhiz}
+\textbf{Plataforma:} Híbrida (web + app móvil)\\
+\textbf{Audiencia objetivo:} Conductores en ciudades y eventos.
+
+\textbf{Funcionalidades relevantes (8):}
+\begin{enumerate}
+\item Descubrimiento de estacionamientos cercanos.
+\item Reserva anticipada.
+\item Comparación de precio y ubicación.
+\item Precio total visible antes de pagar.
+\item Gestión de pases en app.
+\item Búsqueda por venue/evento.
+\item Ahorros promocionados (hasta 50\% en ciertos casos).
+\item Historial de compras.
+\end{enumerate}
+
+\textbf{Flujos clave:}
+\begin{itemize}
+\item \textit{Happy path:} buscar evento $\rightarrow$ comparar precio/distancia $\rightarrow$ reservar $\rightarrow$ mostrar pase.
+\item \textit{Alternativa:} opción llena/no conveniente $\rightarrow$ cambiar filtros $\rightarrow$ nueva reserva.
+\end{itemize}
+
+\textbf{Datos que captura/muestra:} destino, fecha, tarifa, dirección, disponibilidad, pase.
+
+\textbf{Widgets/controles:} buscador, filtros, tarjetas de oferta, botón de reserva, billetera de pases.
+
+\textbf{Evidencia y fuente:}
+\begin{itemize}
+\item \url{https://www.parkwhiz.com/}
+\item \url{https://apps.apple.com/us/app/parkwhiz-1-parking-app/id595743376}
+\end{itemize}
+
+\subsection{Producto 5: HONK}
+\textbf{Plataforma:} Híbrida (web + app + pagos contactless)\\
+\textbf{Audiencia objetivo:} Conductores y operadores de estacionamientos.
+
+\textbf{Funcionalidades relevantes (8):}
+\begin{enumerate}
+\item Pago rápido en app/tap.
+\item Opciones por hora/día/semana/mes.
+\item Mapa de estacionamientos.
+\item Selección por precio/proximidad.
+\item Notificaciones de vencimiento.
+\item Extensión de sesión.
+\item Experiencia sin efectivo.
+\item Integración operativa con lotes.
+\end{enumerate}
+
+\textbf{Flujos clave:}
+\begin{itemize}
+\item \textit{Happy path:} abrir app $\rightarrow$ elegir lote $\rightarrow$ elegir duración $\rightarrow$ pagar.
+\item \textit{Alternativa:} próximo vencimiento $\rightarrow$ alerta push $\rightarrow$ extender tiempo.
+\end{itemize}
+
+\textbf{Datos que captura/muestra:} lote, duración, tarifa, método de pago, estado de sesión, notificaciones.
+
+\textbf{Widgets/controles:} mapa, selector de plan de tiempo, botón \textit{Pay}, notificación push, botón \textit{Extend}.
+
+\textbf{Evidencia y fuente:}
+\begin{itemize}
+\item \url{https://www.honkmobile.com/}
+\item \url{https://play.google.com/store/apps/details?id=com.honkmobile&hl=en_US}
+\end{itemize}
+
+\subsection{Producto 6: EasyPark}
+\textbf{Plataforma:} App móvil (con soporte web de ayuda)\\
+\textbf{Audiencia objetivo:} Conductores urbanos.
+
+\textbf{Funcionalidades relevantes (8):}
+\begin{enumerate}
+\item Iniciar estacionamiento desde app.
+\item Detener estacionamiento manualmente.
+\item Extender tiempo de sesión.
+\item Pago por tiempo realmente usado.
+\item Gestión de placas/vehículos.
+\item Historial y recibos.
+\item Recordatorios de sesión activa.
+\item Operación por zonas de estacionamiento.
+\end{enumerate}
+
+\textbf{Flujos clave:}
+\begin{itemize}
+\item \textit{Happy path:} elegir zona $\rightarrow$ iniciar sesión $\rightarrow$ detener al retirarse $\rightarrow$ pagar tiempo real.
+\item \textit{Alternativa:} antes de vencer $\rightarrow$ extender en app.
+\end{itemize}
+
+\textbf{Datos que captura/muestra:} zona, vehículo, hora inicio/fin, costo final, historial.
+
+\textbf{Widgets/controles:} selector de zona, botón \textit{Start}, botón \textit{Stop}, control tipo rueda para tiempo, recibo.
+
+\textbf{Evidencia y fuente:}
+\begin{itemize}
+\item \url{https://www.easypark.com/en-no/help/parking-app/how-does-it-work/starting-extending-stopping-parking}
+\item \url{https://apps.apple.com/us/app/easypark-parking-made-easy/id449594317}
+\end{itemize}
+
+\section{Matriz comparativa consolidada (6 productos x funcionalidades)}
+\small
+\begin{longtable}{p{3.4cm}cccccccccc}
+\toprule
+\textbf{Producto} & F1 & F2 & F3 & F4 & F5 & F6 & F7 & F8 & F9 & F10 \\
+\midrule
+\endhead
+ParkMobile & X & X & X & X & X & X & X & X &  & X \\
+SpotHero & X & X & X & X & X &  & X & X & X & X \\
+Passport Parking & X & X &  & X & X & X & X & X &  & X \\
+ParkWhiz & X & X & X & X & X &  & X & X & X & X \\
+HONK & X & X & X & X & X & X & X & X &  & X \\
+EasyPark & X & X &  & X & X & X & X & X &  & X \\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\textbf{Leyenda de funcionalidades:}
+\begin{itemize}
+\item F1: Pago móvil por zona
+\item F2: Extensión de sesión
+\item F3: Reserva anticipada
+\item F4: Notificaciones/recordatorios
+\item F5: Historial/recibos
+\item F6: Pago por tiempo real (start/stop)
+\item F7: Gestión de vehículos
+\item F8: Búsqueda/mapa de estacionamientos
+\item F9: Integración con evento/venue
+\item F10: Confirmación/pase digital
+\end{itemize}
+
+\section{Top 10 funcionalidades candidatas para el sistema (con justificación)}
+\begin{enumerate}
+\item \textbf{Pago móvil por zona} --- reduce filas en caseta y acelera salida.
+\item \textbf{Extensión de tiempo remota} --- evita sanción por vencimiento y mejora experiencia.
+\item \textbf{Confirmación digital de pago} --- facilita validación con guardia.
+\item \textbf{Gestión de vehículos del usuario} --- menos errores al pagar.
+\item \textbf{Historial y recibos} --- trazabilidad para soporte y auditoría.
+\item \textbf{Notificaciones de vencimiento} --- previene incidencias y reclamos.
+\item \textbf{Búsqueda por zona/ubicación} --- acelera selección del punto correcto.
+\item \textbf{Pantalla de estado de sesión activa} --- claridad para usuario y operación.
+\item \textbf{Pago mixto (digital + efectivo en contingencia)} --- robustez operativa ante fallas.
+\item \textbf{Flujo de validación rápida en salida} --- menos congestión vehicular.
+\end{enumerate}
+
+\section{Decisiones de diseño}
+\subsection*{3 decisiones que se adoptarán}
+\begin{enumerate}
+\item \textbf{Adoptar pago móvil por zona + confirmación digital.}\\
+Razón: minimiza tiempos de compra y errores manuales.
+\item \textbf{Adoptar notificaciones y extensión de sesión.}\\
+Razón: reduce eventos de vencimiento y mejora satisfacción.
+\item \textbf{Adoptar historial de transacciones y vehículos guardados.}\\
+Razón: soporte más rápido y mejor trazabilidad.
+\end{enumerate}
+
+\subsection*{2 decisiones que se rechazarán}
+\begin{enumerate}
+\item \textbf{Rechazar dependencia exclusiva de reserva anticipada.}\\
+Razón: en campus puede haber uso espontáneo; la reserva no cubre todos los casos.
+\item \textbf{Rechazar flujo sin alternativa offline/efectivo.}\\
+Razón: ante falla de red/terminal, se necesita contingencia para no bloquear salidas.
+\end{enumerate}
+
+\section*{Nota de evidencia}
+Las fuentes usadas son públicas y oficiales. Como siguiente paso del equipo, adjuntar capturas de pantalla (home, flujo de pago, extensión, recibo) por producto dentro de \texttt{Benchmarking Funcional/evidencias/}.
+
+\end{document}
