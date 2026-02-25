@@ -1,0 +1,119 @@
+\documentclass[12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\geometry{margin=2.5cm}
+\setstretch{1.2}
+\setlist[itemize]{leftmargin=*}
+
+\title{\textbf{Estados Interactivos del Sistema}\\
+Sistema universitario de boletos de estacionamiento}
+
+\author{ José Luis Godínez Carrollo ID: 179872, \\
+Robbie Nicolas Curioso de Salazar, ID 186028,\\
+Sebastian Torres Morales ID: 179763,\\
+Héctor Jesús Nuñez Tecpanecatl ID: 181444,\\
+Ricardo Carballido Rosas ID: 174926
+}
+\date{Febrero 2026}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\section{Estados Interactivos del Sistema}
+
+En la aplicación desarrollada para la gestión de boletos virtuales de estacionamiento universitario, se implementan distintos estados interactivos con el objetivo de informar al usuario sobre el progreso de las acciones realizadas dentro del sistema. Estos estados permiten reducir la incertidumbre, mejorar la experiencia de usuario y hacer visible el comportamiento interno de la aplicación durante procesos como autenticación, generación de boleto, pago y validación en salida.
+
+\subsection{1. Estados en el Inicio de Sesión}
+
+Durante el proceso de autenticación, el sistema puede presentar los siguientes estados:
+
+\begin{itemize}
+    \item \textbf{Verificando credenciales...}
+    \item \textbf{Cargando información del usuario...}
+    \item \textbf{Inicio de sesión exitoso. Redirigiendo...}
+    \item \textbf{Usuario o contraseña incorrectos}
+    \item \textbf{Debes completar todos los campos}
+\end{itemize}
+
+Estos estados permiten comunicar al usuario si el acceso fue exitoso o si existe algún error en los datos ingresados.
+
+\subsection{2. Estados en el Menú Principal}
+
+Al ingresar al sistema, pueden mostrarse los siguientes estados:
+
+\begin{itemize}
+    \item \textbf{Cargando información del sistema...}
+    \item \textbf{Consultando estado de tu cuenta...}
+    \item \textbf{No tienes boletos activos}
+\end{itemize}
+
+\subsection{3. Estados en la Generación de Boleto Virtual}
+
+Durante la generación del boleto virtual:
+
+\begin{itemize}
+    \item \textbf{Iniciando generación de boleto...}
+    \item \textbf{Generando código QR...}
+    \item \textbf{Boleto generado correctamente}
+\end{itemize}
+
+\subsection{4. Estados en el Proceso de Pago}
+
+El proceso de pago es una de las partes críticas del sistema, por lo que se incluyen los siguientes estados:
+
+\begin{itemize}
+    \item \textbf{Procesando pago...}
+    \item \textbf{Validando información bancaria...}
+    \item \textbf{Confirmando transacción...}
+    \item \textbf{Pago rechazado}
+    \item \textbf{Fondos insuficientes}
+    \item \textbf{Pago realizado con éxito}
+    \item \textbf{Generando comprobante...}
+\end{itemize}
+
+\subsection{5. Estados en la Visualización del Boleto Virtual}
+
+Una vez completado el pago, el sistema genera el boleto virtual correspondiente:
+
+\begin{itemize}
+    \item \textbf{Cargando boleto virtual...}
+    \item \textbf{Boleto activo --- listo para usar}
+    \item \textbf{Este boleto ya fue utilizado}
+\end{itemize}
+
+\subsection{6. Estados en la Validación de Salida}
+
+Durante el escaneo del boleto en la caseta de salida:
+
+\begin{itemize}
+    \item \textbf{Escaneando boleto...}
+    \item \textbf{Validando información...}
+    \item \textbf{Boleto inválido}
+    \item \textbf{Boleto ya utilizado}
+    \item \textbf{Salida autorizada}
+\end{itemize}
+
+\subsection{7. Estados en el Historial}
+
+En la consulta de registros previos:
+
+\begin{itemize}
+    \item \textbf{Cargando historial...}
+    \item \textbf{No tienes registros previos}
+    \item \textbf{Actualizando información...}
+\end{itemize}
+
+\bigskip
+
+En conjunto, estos estados interactivos permiten que el sistema sea más claro y transparente para el usuario, mostrando retroalimentación inmediata ante cada acción realizada dentro de la aplicación. Su implementación contribuye a una mejor experiencia de usuario y a un flujo operativo más eficiente dentro del sistema universitario de estacionamiento.
+
+\end{document}
