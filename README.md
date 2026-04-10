@@ -23,5 +23,9 @@ Repositorio de trabajo para el análisis y modelado del proceso de salida de cam
 - `assets/`: archivos fuente (PDF/DOCX) y capturas.
 - `links.md`: vínculos a Lucid/draw.io/SharePoint.
 
+## Estado del Repositorio
+
+> **ARCHIVO** — Este repositorio ya no se encuentra en desarrollo activo. Fue utilizado exclusivamente para la fase de análisis AS-IS del proyecto. Todo el desarrollo actual se realiza en el repositorio principal: [UDLAP-Tickets](https://github.com/Robbienicur/UDLAP-Tickets).
+
 ## Nota
-Este repo guarda contexto de trabajo para facilitar continuidad con el asistente y el equipo.
+Este repo guarda contexto de trabajo del análisis inicial para referencia del equipo.
